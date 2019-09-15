@@ -77,11 +77,19 @@ function squareOrDouble(n) {
 function ageFromBirthDate(birthDate) {
   const _MS_PER_YEAR = 1000 * 60 * 60 * 24 * 365;
 
-  let date = Date(birthDate)
-  let age = Date.now() - date.getTime();
-  let now = new Date(age)
+  const year = +(birthDate.slice(0,4))
+  const month = birthDate.slice(4,6)
+  const day = birthDate.slice(6,8)
+  const date = new Date(`${month}/${day}/${year}`)
+  const today = new Date();
 
-  console.log( now.getUTCFullYear()- 1970)
+  let age = today - date
+  age = age/ _MS_PER_YEAR
+  
+
+  return Math.floor(age)
+
+  // console.log( now.getUTCFullYear()- 1970)
 
 
 
